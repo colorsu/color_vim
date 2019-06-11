@@ -6,7 +6,10 @@ set expandtab
 set softtabstop=4   " backspace
 set shiftwidth=4    " indent width
 set laststatus=2
-syntax on
+syntax enable
+set background=light
+"colorscheme solarized
+
 """}}}
 
 """ VUNDLE"""{{{
@@ -24,6 +27,10 @@ call vundle#begin()
 	Plugin 'trinity.vim'
 	Plugin 'w0rp/ale'
 	Plugin 'vim-airline/vim-airline'
+    Plugin 'nvie/vim-flake8'
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 """}}}
@@ -113,6 +120,11 @@ let g:ale_linters = {'c++': 'clang++'}
 let g:ale_lint_on_text_changed = 1
 "打开文件时不进行检查
 let g:ale_lint_on_enter = 1
+let g:ale_linters = {
+\   'c++': ['clang'],
+\   'c': ['clang'],
+\   'python': ['pylint'],
+\}
 """}}}
 
 """ YouCompleteMe{{{
